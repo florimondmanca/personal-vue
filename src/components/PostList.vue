@@ -8,7 +8,7 @@
 
 <script lang="ts">
     import Vue, {PropOptions} from 'vue';
-    import {Post} from 'src/common/post';
+    import Post from 'src/common/post';
 
     export default Vue.component('post-list', {
         props: {

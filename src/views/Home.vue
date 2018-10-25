@@ -1,6 +1,5 @@
 <template>
-    <div class="home">
-        <img alt="Vue logo" src="../assets/logo.png">
+    <div>
         <h1>Latest posts</h1>
         <post-list :posts="posts"></post-list>
     </div>
@@ -9,7 +8,7 @@
 <script lang="ts">
     import Vue from 'vue';
     import PostList from '@/components/PostList.vue';
-    import http from '@/common/http';
+    import PostService from '@/services/post.service';
 
     export default Vue.extend({
         name: 'home',
@@ -22,15 +21,13 @@
             };
         },
         methods: {
-             getPosts() {
-                http.get('posts?draft=3')
-                    .then(resp => resp.data)
-                    .then(data => this.posts = data['results'])
-                ;
+            getPosts() {
+                PostService.list()
+                    .then((posts) => this.posts = posts);
             },
         },
         created() {
             this.getPosts();
-        }
+        },
     });
 </script>
