@@ -7,6 +7,7 @@
 
 <script lang="ts">
     import Vue from 'vue';
+    import {Route} from 'vue-router';
     import PostService from '@/services/PostService';
     import PostList from '@/components/PostList.vue';
     import Post from '@/common/post';
@@ -21,8 +22,10 @@
                 posts: [] as Post[],
             };
         },
-        created() {
-            PostService.list().then((posts) => this.posts = posts);
+        beforeRouteEnter(to: Route, from: Route, next) {
+            PostService.list().then((posts: Post[]) => {
+                next((vm: Vue) => Vue.set(vm, 'posts', posts));
+            });
         },
     });
 </script>

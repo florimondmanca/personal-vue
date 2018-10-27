@@ -4,6 +4,7 @@ import TheMain from './views/TheMain.vue';
 import TheBlog from './views/TheBlog.vue';
 import TheBlogHome from './views/TheBlogHome.vue';
 import TagPostList from './views/TagPostList.vue';
+import PostDetail from './views/PostDetail.vue';
 
 Vue.use(Router);
 
@@ -28,6 +29,12 @@ export default new Router({
                             path: '/t/:tag',
                             name: 'tag-post-list',
                             component: TagPostList,
+                            props: true,
+                        },
+                        {
+                            path: ':slug',
+                            name: 'post-detail',
+                            component: PostDetail,
                         },
                     ],
                 },

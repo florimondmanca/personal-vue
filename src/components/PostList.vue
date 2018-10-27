@@ -6,15 +6,15 @@
                     {{ post.published }}
                 </label>
                 <PostTagList
-                    class="tag-list"
-                    :class="{ separated: post.published }"
-                    :tags="post.tags"
-                    v-if="post.tags.length > 0"/>
+                        class="tag-list"
+                        :class="{ separated: post.published }"
+                        :tags="post.tags"
+                        v-if="post.tags.length > 0"/>
             </div>
 
             <h3>
                 <!-- TODO add link to post detail -->
-                <router-link to="home" @click="scrollTop">
+                <router-link :to="{ name: 'post-detail', params: { slug: post.slug } }" @click="scrollTop">
                     {{ post.title }}
                 </router-link>
             </h3>

@@ -3,7 +3,9 @@
         <div id="nav-container">
             <TheNavBar/>
         </div>
-        <router-view/>
+        <section id="page-content">
+            <router-view/>
+        </section>
         <TheFooter/>
     </main>
 </template>
@@ -28,5 +30,9 @@
         top: 0;
         width: 100%;
         z-index: 2; // float on top of page content
+    }
+
+    #page-content {
+        padding-top: 1em;
     }
 </style>

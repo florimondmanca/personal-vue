@@ -12,29 +12,34 @@
     import PostService from '@/services/PostService';
     import PostList from '@/components/PostList.vue';
     import Post from '@/common/post';
+    import {Route} from 'vue-router';
 
     export default Vue.extend({
         name: 'TagPostList',
         components: {
             PostList,
         },
+        props: {
+            tag: {
+                type: String,
+                required: true,
+            },
+        },
         data() {
             return {
                 posts: [] as Post[],
             };
         },
-        computed: {
-            tag(): string {
-                return this.$route.params.tag;
-            },
+        beforeRouteEnter(to: Route, from: Route, next) {
+            PostService.list({ tag: to.params['tag'] }).then((posts: Post[]) => {
+                next((vm: Vue) => Vue.set(vm, 'posts', posts));
+            });
         },
-        watch: {
-            '$route.params.tag'() {
-                this.getPosts();
-            },
-        },
-        created() {
-            this.getPosts();
+        beforeRouteUpdate(to, from, next) {
+            PostService.list({ tag: to.params['tag'] }).then((posts: Post[]) => {
+                this.posts = posts;
+                next();
+            });
         },
         methods: {
             getPosts() {

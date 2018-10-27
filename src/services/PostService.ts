@@ -13,4 +13,8 @@ export default {
         const resp = await http.get('posts' + querystring.stringify(params));
         return resp.data.results.map(PostSerializer.parse);
     },
+    async retrieve(slug: string): Promise<Post> {
+        const res = await http.get(`posts/${slug}`);
+        return PostSerializer.parse(res.data);
+    },
 };
