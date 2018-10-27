@@ -1,7 +1,7 @@
 <template>
     <ul :class="{ 'inline': inline, 'stacked': !inline }">
         <li v-for="tag in tags" :key="tag">
-            <router-link :to="'/t' + tag" class="no-border">
+            <router-link :to="{ name: 'tag-post-list', params: { tag } }" class="no-border">
                 #{{ tag }}
             </router-link>
         </li>

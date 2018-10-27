@@ -7,8 +7,8 @@
 
 <script lang="ts">
     import Vue from 'vue';
-    import PostList from '@/components/PostList.vue';
     import PostService from '@/services/PostService';
+    import PostList from '@/components/PostList.vue';
     import Post from '@/common/post';
 
     export default Vue.extend({

@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import TheMain from './views/TheMain.vue';
 import TheBlog from './views/TheBlog.vue';
 import TheBlogHome from './views/TheBlogHome.vue';
+import TagPostList from './views/TagPostList.vue';
 
 Vue.use(Router);
 
@@ -20,8 +21,13 @@ export default new Router({
                     children: [
                         {
                             path: '/',
-                            name: 'blog-home',
+                            name: 'home',
                             component: TheBlogHome,
+                        },
+                        {
+                            path: '/t/:tag',
+                            name: 'tag-post-list',
+                            component: TagPostList,
                         },
                     ],
                 },
