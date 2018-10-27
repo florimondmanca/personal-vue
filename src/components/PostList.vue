@@ -10,11 +10,12 @@
     import Vue, {PropOptions} from 'vue';
     import Post from 'src/common/post';
 
-    export default Vue.component('post-list', {
+    export default Vue.component('PostList', {
         props: {
-            posts: Array as PropOptions<Post[]>,
+            posts: {
+                type: Array,
+                required: true,
+            } as PropOptions<Post[]>,
         },
     });
 </script>
-
-<style scoped lang="scss"></style>

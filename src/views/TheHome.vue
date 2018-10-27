@@ -1,17 +1,17 @@
 <template>
     <div>
         <h1>Latest posts</h1>
-        <post-list :posts="posts"></post-list>
+        <PostList :posts="posts"/>
     </div>
 </template>
 
 <script lang="ts">
     import Vue from 'vue';
     import PostList from '@/components/PostList.vue';
-    import PostService from '@/services/post.service';
+    import PostService from '@/services/PostService';
 
     export default Vue.extend({
-        name: 'home',
+        name: 'TheHome',
         components: {
             PostList,
         },
@@ -21,9 +21,8 @@
             };
         },
         methods: {
-            getPosts() {
-                PostService.list()
-                    .then((posts) => this.posts = posts);
+            async getPosts() {
+                this.posts = await PostService.list();
             },
         },
         created() {
