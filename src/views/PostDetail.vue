@@ -33,9 +33,7 @@
         -->
 
         <!-- TODO: markdown rendering -->
-        <div>
-            {{ post.content }}
-        </div>
+        <div v-html="renderedContent"></div>
 
         <!-- TODO
         <app-post-footer></app-post-footer>
@@ -55,6 +53,7 @@
     import Post from '@/common/post';
     import PostService from '@/services/PostService';
     import {Route} from 'vue-router';
+    import markdown from '@/common/markdown';
 
     export default Vue.extend({
         name: 'PostDetail',
@@ -62,6 +61,11 @@
             return {
                 post: undefined,
             };
+        },
+        computed: {
+            renderedContent() {
+                return markdown.render(this.post.content);
+            },
         },
         beforeRouteEnter(to: Route, from: Route, next) {
             PostService.retrieve(to.params['slug']).then((post) => {

@@ -23,4 +23,36 @@
         padding: 0;
         margin: 0;
     }
+
+    pre {
+        background: #f9f9f9;
+        border: 1px solid #eee;
+        border-radius: 3px;
+        overflow: auto;
+        padding: 1em;
+        margin-bottom: 1em;
+        & > code {
+            font-size: 0.95em;
+        }
+    }
+
+    code {
+        font-family: 'Inconsolata', 'Courier', monospace;
+    }
+
+    .markdown-image {
+        margin: 2em 0;
+        img {
+            display: block;
+            max-width: 100%;
+            margin: auto;
+        }
+        figcaption {
+            padding-top: 1em;
+            text-align: center;
+            color: steelblue;
+            font-style: italic;
+            font-size: .9em;
+        }
+    }
 </style>
