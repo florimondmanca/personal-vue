@@ -29,8 +29,8 @@
 
 <style scoped lang="scss">
     nav {
-        // NOTE: background defined in _material.scss
         padding-top: .5em;
+        background: white;
         ul {
             list-style-type: none;
             margin: 0;

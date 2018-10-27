@@ -1,0 +1,9 @@
+@mixin pad-h($amount) {
+  box-sizing: border-box;
+  padding-left: $amount;
+  padding-right: $amount;
+}
+
+@mixin pad-h-sm() {
+  @include pad-h(1em);
+}

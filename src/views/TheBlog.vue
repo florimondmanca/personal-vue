@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="pad-h-responsive">
         <router-view/>
     </section>
 </template>
@@ -11,7 +11,3 @@
         name: 'TheBlog',
     });
 </script>
-
-<style scoped>
-
-</style>

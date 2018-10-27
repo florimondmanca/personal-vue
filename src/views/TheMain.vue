@@ -1,6 +1,8 @@
 <template>
     <main>
-        <TheNavBar/>
+        <div id="nav-container">
+            <TheNavBar/>
+        </div>
         <router-view/>
         <TheFooter/>
     </main>
@@ -20,6 +22,11 @@
     });
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+    #nav-container {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        z-index: 2; // float on top of page content
+    }
 </style>
