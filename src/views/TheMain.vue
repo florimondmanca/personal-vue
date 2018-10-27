@@ -6,7 +6,7 @@
     </main>
 </template>
 
-<script>
+<script lang="ts">
     import Vue from 'vue';
     import TheNavBar from '@/components/TheNavBar.vue';
     import TheFooter from '@/components/TheFooter.vue';
