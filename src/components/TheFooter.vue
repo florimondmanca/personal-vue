@@ -1,19 +1,22 @@
 <template>
-    <footer id="footer">
+    <footer>
         <hr>
         <ul class="socials">
             <li>
-                <a href="https://github.com/florimondmanca" target="_blank" rel="noreferrer" title="GitHub (florimondmanca)">
+                <a href="https://github.com/florimondmanca" target="_blank" rel="noreferrer"
+                   title="GitHub (florimondmanca)">
                     GitHub
                 </a>
             </li>
             <li>
-                <a href="https://twitter.com/FlorimondManca" target="_blank" rel="noreferrer" title="Twitter (@FlorimondManca)">
+                <a href="https://twitter.com/FlorimondManca" target="_blank" rel="noreferrer"
+                   title="Twitter (@FlorimondManca)">
                     Twitter
                 </a>
             </li>
             <li>
-                <a href="https://www.linkedin.com/in/florimondmanca" target="_blank" rel="noreferrer" title="LinkedIn (florimondmanca)">
+                <a href="https://www.linkedin.com/in/florimondmanca" target="_blank" rel="noreferrer"
+                   title="LinkedIn (florimondmanca)">
                     LinkedIn
                 </a>
             </li>
@@ -57,6 +60,22 @@
     });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+    footer {
+        text-align: center;
+        padding: 2em 0;
+    }
 
+    ul.socials {
+        list-style-type: none;
+        width: fit-content;
+        margin: 0 auto;
+        padding: 1em;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        li {
+            margin: .7em;
+        }
+    }
 </style>
