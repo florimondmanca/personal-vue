@@ -5,9 +5,11 @@
                 <label class="text-muted" v-if="post.published">
                     {{ post.published }}
                 </label>
-                <!-- TODO
-                <app-tag-list class="tag-list" [ngClass]="{'separated': post.published}" [tags]="post.tags" *ngIf="post.tags.length > 0"></app-tag-list>
-                -->
+                <PostTagList
+                    class="tag-list"
+                    :class="{ separated: post.published }"
+                    :tags="post.tags"
+                    v-if="post.tags.length > 0"/>
             </div>
 
             <h3>
@@ -30,8 +32,12 @@
 <script lang="ts">
     import Vue, {PropOptions} from 'vue';
     import Post from 'src/common/post';
+    import PostTagList from './PostTagList.vue';
 
     export default Vue.component('PostList', {
+        components: {
+            PostTagList,
+        },
         props: {
             posts: {
                 type: Array,
@@ -56,17 +62,16 @@
     }
 
     .post {
-        // NOTE:border defined in _material . scss padding-bottom:1 em;
+        padding-bottom: 1em;
         & + .post {
+            border-top: 1px solid lightgray;
             padding-top: 1em;
         }
-
     }
 
     .post-header {
         font-size: smaller;
         margin-bottom: .25em;
-
         @include media-xs {
             margin-bottom: 0;
             font-size: inherit;
@@ -81,6 +86,5 @@
         &.separated::before {
             content: '\2219';
         }
-
     }
 </style>

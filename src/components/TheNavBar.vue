@@ -1,5 +1,5 @@
 <template>
-    <nav>
+    <nav class="pad-h-responsive">
         <ul>
             <li>
                 <h1>
