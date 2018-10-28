@@ -50,7 +50,7 @@
 
 <script lang="ts">
     import Vue from 'vue';
-    import Post from '@/common/post';
+    import Post from '@/models/Post';
     import PostService from '@/services/PostService';
     import {Route} from 'vue-router';
     import markdown from '@/common/markdown';

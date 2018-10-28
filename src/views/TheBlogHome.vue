@@ -10,7 +10,7 @@
     import {Route} from 'vue-router';
     import PostService from '@/services/PostService';
     import PostList from '@/components/PostList.vue';
-    import Post from '@/common/post';
+    import Post from '@/models/Post';
 
     export default Vue.extend({
         name: 'TheBlogHome',

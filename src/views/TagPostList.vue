@@ -11,7 +11,7 @@
     import Vue from 'vue';
     import PostService from '@/services/PostService';
     import PostList from '@/components/PostList.vue';
-    import Post from '@/common/post';
+    import Post from '@/models/Post';
     import {Route} from 'vue-router';
 
     export default Vue.extend({
