@@ -8,10 +8,11 @@
 <script lang="ts">
     import Vue from 'vue';
     import Component from 'vue-class-component';
-    import {Route} from 'vue-router';
-    import {Post} from '@/store/blog';
-    import PostService from '@/services/PostService';
+    import {Action, State} from 'vuex-class';
+    import {BlogState, Post} from '@/store/blog';
+    import {LIST} from '@/store/blog/actions';
     import PostList from '@/components/PostList.vue';
+    const namespace = 'blog';
 
     @Component({
         name: 'TheBlogHome',
@@ -20,12 +21,16 @@
         },
     })
     export default class TheBlogHome extends Vue {
-        posts: Post[] = [];
 
-        beforeRouteEnter(to: Route, from: Route, next) {
-            PostService.list().then((posts: Post[]) => {
-                next((vm: Vue) => Vue.set(vm, 'posts', posts));
-            });
+        @State('blog') blog: BlogState;
+        @Action(LIST, {namespace}) list: any;
+
+        get posts(): Post[] {
+            return this.blog && this.blog.posts || [];
+        }
+
+        created() {
+            this.list();
         }
     }
 </script>
