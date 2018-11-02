@@ -39,7 +39,24 @@ npm run build
 
 ## Highlights
 
-- Project generated using VueCLI.
-- Static typing w/ TypeScript.
-- Routing w/ Vue Router.
-- State management w/ Vuex (see [src/store](src/store)).
+Features:
+
+- Post feed
+- Post detail
+- Posts by tag
+
+Technologies:
+
+- Project generated using [Vue CLI 3](https://cli.vuejs.org).
+- Static typing w/ [TypeScript](https://vuejs.org/v2/guide/typescript.html).
+- Routing w/ [Vue Router](https://router.vuejs.org).
+- State management w/ [Vuex](https://vuex.vuejs.org) (see [src/store](src/store)).
+- TypeScript-friendly Vuex w/ [vuex-class](https://github.com/ktsn/vuex-class).
+- HTTP requests w/ [Axios](https://github.com/axios/axios).
+- Styling w/ SASS.
+- Markdown rendering w/ [Marked.js](https://marked.js.org) (syntax highlighting w/ [hightlight.js](https://highlightjs.org)).
+
+TODO:
+
+- Material components w/ [Vuetify](https://vuetifyjs.com).
+- Infinite scroll on post feed
