@@ -4,6 +4,15 @@
     </div>
 </template>
 
+<script lang="ts">
+    import Vue from 'vue';
+    import '@/class-component-hooks';
+
+    export default Vue.extend({
+        name: 'App',
+    });
+</script>
+
 <style lang="scss">
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
