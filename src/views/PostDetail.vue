@@ -50,29 +50,32 @@
 
 <script lang="ts">
     import Vue from 'vue';
-    import {Post} from '@/store/blog';
-    import PostService from '@/services/PostService';
-    import {Route} from 'vue-router';
+    import Component from 'vue-class-component';
+    import {Action, State} from 'vuex-class';
     import markdown from '@/common/markdown';
+    import {BlogState, Post} from '@/store/blog';
+    import {RETRIEVE} from '@/store/blog/actions';
 
-    export default Vue.extend({
+    @Component({
         name: 'PostDetail',
-        data(): { post?: Post } {
-            return {
-                post: undefined,
-            };
-        },
-        computed: {
-            renderedContent() {
-                return markdown.render(this.post.content);
-            },
-        },
-        beforeRouteEnter(to: Route, from: Route, next) {
-            PostService.retrieve(to.params['slug']).then((post) => {
-                next((vm: Vue) => Vue.set(vm, 'post', post));
-            });
-        },
-    });
+    })
+    export default class PostDetail extends Vue {
+
+        @State('blog') blog: BlogState;
+        @Action(RETRIEVE, {namespace: 'blog'}) retrieve: any;
+
+        get post(): Post | null {
+            return this.blog ? this.blog.post : null;
+        }
+
+        get renderedContent(): string {
+            return this.post ? markdown.render(this.post.content) : '';
+        }
+
+        created() {
+            this.retrieve(this.$route.params['slug']);
+        }
+    }
 </script>
 
 <style lang="scss" scoped>

@@ -4,9 +4,10 @@ import querystring from '@/common/querystring';
 import {PostSerializer} from './serializers';
 import {BlogState} from './types';
 import {RootState} from '../types';
-import {FETCH_POSTS, FETCH_POSTS_SUCCESS} from './mutations';
+import {FETCH, FETCH_POST_SUCCESS, FETCH_POSTS_SUCCESS} from './mutations';
 
 export const LIST = 'LIST';
+export const RETRIEVE = 'RETRIEVE';
 
 interface FetchPostsOptions {
     draft?: boolean;
@@ -15,7 +16,7 @@ interface FetchPostsOptions {
 
 export const actions: ActionTree<BlogState, RootState> = {
     async [LIST]({commit}, options: FetchPostsOptions = {}) {
-        commit(FETCH_POSTS);
+        commit(FETCH);
         const params: any = {
             draft: options.draft ? '2' : '3',
         };
@@ -24,5 +25,10 @@ export const actions: ActionTree<BlogState, RootState> = {
         }
         const res = await http.get('posts' + querystring.stringify(params));
         commit(FETCH_POSTS_SUCCESS, res.data.results.map(PostSerializer.parse));
+    },
+    async [RETRIEVE]({commit}, slug: string) {
+        commit(FETCH);
+        const res = await http.get(`posts/${slug}`);
+        commit(FETCH_POST_SUCCESS, PostSerializer.parse(res.data));
     },
 };

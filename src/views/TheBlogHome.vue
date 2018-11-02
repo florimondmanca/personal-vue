@@ -12,7 +12,6 @@
     import {BlogState, Post} from '@/store/blog';
     import {LIST} from '@/store/blog/actions';
     import PostList from '@/components/PostList.vue';
-    const namespace = 'blog';
 
     @Component({
         name: 'TheBlogHome',
@@ -23,7 +22,7 @@
     export default class TheBlogHome extends Vue {
 
         @State('blog') blog: BlogState;
-        @Action(LIST, {namespace}) list: any;
+        @Action(LIST, {namespace: 'blog'}) list: any;
 
         get posts(): Post[] {
             return this.blog && this.blog.posts || [];

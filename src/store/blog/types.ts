@@ -9,5 +9,6 @@ export interface Post {
 
 export interface BlogState {
     posts: Post[];
+    post: Post | null;
     pending: boolean;
 }

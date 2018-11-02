@@ -12,6 +12,7 @@ export const blog: Module<BlogState, RootState> = {
     state: {
         pending: false,
         posts: [],
+        post: null,
     },
     mutations,
     actions,
