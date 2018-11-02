@@ -9,46 +9,39 @@
 
 <script lang="ts">
     import Vue from 'vue';
-    import PostService from '@/services/PostService';
-    import PostList from '@/components/PostList.vue';
-    import {Post} from '@/store/blog';
     import {Route} from 'vue-router';
+    import Component from 'vue-class-component';
+    import {Action, State} from 'vuex-class';
+    import PostList from '@/components/PostList.vue';
+    import {BlogState, Post} from '@/store/blog';
+    import {LIST} from '@/store/blog/actions';
 
-    export default Vue.extend({
+    @Component({
         name: 'TagPostList',
         components: {
             PostList,
         },
-        props: {
-            tag: {
-                type: String,
-                required: true,
-            },
-        },
-        data() {
-            return {
-                posts: [] as Post[],
-            };
-        },
-        beforeRouteEnter(to: Route, from: Route, next) {
-            PostService.list({ tag: to.params['tag'] }).then((posts: Post[]) => {
-                next((vm: Vue) => Vue.set(vm, 'posts', posts));
-            });
-        },
-        beforeRouteUpdate(to, from, next) {
-            PostService.list({ tag: to.params['tag'] }).then((posts: Post[]) => {
-                this.posts = posts;
-                next();
-            });
-        },
-        methods: {
-            getPosts() {
-                PostService.list({tag: this.tag}).then((posts) => this.posts = posts);
-            },
-        },
-    });
+    })
+    export default class TagPostList extends Vue {
+
+        @State('blog') blog: BlogState;
+        @Action(LIST, {namespace: 'blog'}) list: any;
+
+        get tag(): string {
+            return this.$route.params['tag'];
+        }
+
+        get posts(): Post[] {
+            return this.blog ? this.blog.posts : [];
+        }
+
+        created() {
+            this.list({tag: this.tag});
+        }
+
+        beforeRouteUpdate(to: Route, from, next) {
+            this.list({tag: to.params['tag']}).then(() => next());
+        }
+    }
 </script>
 
-<style lang="scss" scoped>
-
-</style>

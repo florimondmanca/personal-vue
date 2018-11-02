@@ -29,7 +29,6 @@ export default new Router({
                             path: '/t/:tag',
                             name: 'tag-post-list',
                             component: TagPostList,
-                            props: true,
                         },
                         {
                             path: ':slug',
