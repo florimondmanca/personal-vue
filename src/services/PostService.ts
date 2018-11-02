@@ -1,6 +1,6 @@
 import http from '@/common/http';
 import querystring from '@/common/querystring';
-import Post, {PostSerializer} from '@/models/Post';
+import { Post, PostSerializer } from '@/store/blog';
 
 export default {
     /* Get a list of blog posts */

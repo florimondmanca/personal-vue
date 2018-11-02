@@ -31,7 +31,7 @@
 
 <script lang="ts">
     import Vue, {PropOptions} from 'vue';
-    import Post from '@/models/Post';
+    import {Post} from '@/store/blog';
     import PostTagList from './PostTagList.vue';
 
     export default Vue.component('PostList', {

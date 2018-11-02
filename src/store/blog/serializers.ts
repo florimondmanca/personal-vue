@@ -1,13 +1,6 @@
-export default interface Post {
-    slug: string;
-    title: string;
-    description: string;
-    content: string;
-    published: Date | null;
-    tags: string[];
-}
+import {Post} from './types';
 
-const PostSerializer = {
+export const PostSerializer = {
     parse(data: any): Post {
         return {
             slug: data.slug,
@@ -18,8 +11,4 @@ const PostSerializer = {
             tags: data.tags,
         };
     },
-};
-
-export {
-    PostSerializer,
 };
