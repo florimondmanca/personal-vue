@@ -7,9 +7,16 @@
 <script lang="ts">
     import Vue from 'vue';
     import '@/class-component-hooks';
+    import {storedToken} from './store/auth';
+    import {AuthorizationHeader} from './common/http';
 
     export default Vue.extend({
         name: 'App',
+        beforeCreate() {
+            if (storedToken.isSet()) {
+                AuthorizationHeader.set(storedToken.get());
+            }
+        }
     });
 </script>
 
