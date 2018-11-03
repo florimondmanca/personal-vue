@@ -1,5 +1,5 @@
 import {MutationTree} from 'vuex';
-import {AuthorizationHeader} from '@/common/http';
+import {Authorization} from '@/common/http';
 import {AuthState, storedToken, User} from './types';
 
 export const LOGIN_START = 'LOGIN_START';
@@ -14,7 +14,7 @@ export const mutations: MutationTree<AuthState> = {
     },
     [SET_TOKEN]: (state, token: string) => {
         storedToken.set(token);
-        AuthorizationHeader.set(token);
+        Authorization.set(token);
     },
     [SET_USER]: (state, user: User) => {
         state.user = user;
@@ -25,7 +25,7 @@ export const mutations: MutationTree<AuthState> = {
     },
     [LOGOUT]: (state) => {
         storedToken.remove();
-        AuthorizationHeader.unset();
+        Authorization.unset();
         state.user = undefined;
         state.isLoggedIn = false;
     },

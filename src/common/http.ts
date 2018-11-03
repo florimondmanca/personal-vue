@@ -11,10 +11,7 @@ const http = axios.create({
     },
 });
 
-export class AuthorizationHeader {
-    public static isSet(): boolean {
-        return !!http.defaults.headers.common.Authorization;
-    }
+export class Authorization {
     public static set(token: string) {
         http.defaults.headers.common.Authorization = `Bearer: ${token}`;
     }
