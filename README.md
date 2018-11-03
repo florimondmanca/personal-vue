@@ -44,6 +44,8 @@ Features:
 - Post feed
 - Post detail
 - Posts by tag
+- Login/logout
+- Drafts (logged in only)
 
 Technologies:
 
@@ -59,4 +61,4 @@ Technologies:
 TODO:
 
 - Material components w/ [Vuetify](https://vuetifyjs.com).
-- Infinite scroll on post feed
+- Infinite scroll on post feed.
