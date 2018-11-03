@@ -28,7 +28,7 @@
 
         username = '';
         password = '';
-        error = null;
+        error: string = null;
 
         @State('auth') auth: AuthState;
         @Action(LOGIN, {namespace: 'auth'}) login: any;
@@ -38,7 +38,7 @@
                 username: this.username,
                 password: this.password,
             })
-                .then(() => this.$router.push('/'))
+                .then(() => this.$router.push(this.$route.query['redirect'] || {name: 'home'}))
                 .catch(() => {
                     this.error = LOGIN_FAILED_ERROR;
                 });

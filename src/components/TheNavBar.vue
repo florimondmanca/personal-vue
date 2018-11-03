@@ -30,8 +30,8 @@
     import Vue from 'vue';
     import Component from 'vue-class-component';
     import {Action, State} from 'vuex-class';
-    import {AuthState} from '../store/auth';
-    import {LOGOUT} from '../store/auth/mutations';
+    import {AuthState} from '@/store/auth';
+    import {LOGOUT} from '@/store/auth/mutations';
 
     @Component({
         name: 'TheNavBar',
@@ -46,7 +46,7 @@
         }
 
         logout() {
-            this._logout().then(() => this.$router.push('/'));
+            this._logout().then(() => this.$router.push({name: 'home'}));
         }
     }
 </script>
