@@ -28,12 +28,13 @@
 
         username = '';
         password = '';
-        error: string = null;
+        error: string | null = null;
 
         @State('auth') auth: AuthState;
         @Action(LOGIN, {namespace: 'auth'}) login: any;
 
         onSubmit() {
+            this.error = null;
             this.login({
                 username: this.username,
                 password: this.password,
