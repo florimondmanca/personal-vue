@@ -2,16 +2,14 @@ const TOKEN_ITEM_KEY = 'token';
 
 export interface User {
     id: number;
-    firstName: string;
-    lastName: string;
+    isAdmin: boolean;
 }
 
 export const UserSerializer = {
     parse(data: any): User {
         return {
             id: data.id,
-            firstName: data.first_name,
-            lastName: data.last_name,
+            isAdmin: data.is_admin,
         };
     },
 };
@@ -20,7 +18,6 @@ export interface AuthState {
     user?: User;
     isLoggedIn: boolean;
     pending: boolean;
-    error: boolean;
 }
 
 export const storedToken = {

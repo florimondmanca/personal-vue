@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import TheMain from './views/TheMain.vue';
 import TheBlog from './views/TheBlog.vue';
+import TheAdmin from './views/TheAdmin.vue';
+import TheLogin from './views/TheLogin.vue';
 import TheBlogHome from './views/TheBlogHome.vue';
 import TagPostList from './views/TagPostList.vue';
 import PostDetail from './views/PostDetail.vue';
@@ -16,6 +18,16 @@ export default new Router({
             path: '/',
             component: TheMain,
             children: [
+                {
+                    path: '/login',
+                    name: 'login',
+                    component: TheLogin,
+                },
+                {
+                    path: '/admin',
+                    name: 'admin',
+                    component: TheAdmin,
+                },
                 {
                     path: '/',
                     component: TheBlog,

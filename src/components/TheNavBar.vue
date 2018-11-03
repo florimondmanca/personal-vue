@@ -12,9 +12,14 @@
             <li>
                 <input type="search" class="full-width" placeholder="Search">
             </li>
-            <li>
-                <button type="button">
-                    ...
+            <li v-if="!loggedIn">
+                <router-link :to="{name: 'login'}">
+                    Login
+                </router-link>
+            </li>
+            <li v-if="loggedIn">
+                <button @click="logout">
+                    Logout
                 </button>
             </li>
         </ul>
@@ -23,8 +28,27 @@
 
 <script lang="ts">
     import Vue from 'vue';
+    import Component from 'vue-class-component';
+    import {Action, State} from 'vuex-class';
+    import {AuthState} from '../store/auth';
+    import {LOGOUT} from '../store/auth/mutations';
 
-    export default Vue.component('TheNavBar', {});
+    @Component({
+        name: 'TheNavBar',
+    })
+    export default class TheNavBar extends Vue {
+
+        @State('auth') auth: AuthState;
+        @Action(LOGOUT, {namespace: 'auth'}) _logout: any;
+
+        get loggedIn(): boolean {
+            return this.auth ? this.auth.isLoggedIn : false;
+        }
+
+        logout() {
+            this._logout().then(() => this.$router.push('/'));
+        }
+    }
 </script>
 
 <style scoped lang="scss">

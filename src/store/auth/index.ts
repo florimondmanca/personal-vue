@@ -12,7 +12,6 @@ export const auth: Module<AuthState, RootState> = {
         user: undefined,
         isLoggedIn: storedToken.isSet(),
         pending: false,
-        error: false,
     },
     mutations,
     actions,

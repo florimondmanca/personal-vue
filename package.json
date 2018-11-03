@@ -18,6 +18,7 @@
     "vuex-class": "^0.3.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-catch-binding": "^7.0.0",
     "@vue/cli-plugin-babel": "^3.0.5",
     "@vue/cli-plugin-typescript": "^3.0.5",
     "@vue/cli-service": "^3.0.5",
