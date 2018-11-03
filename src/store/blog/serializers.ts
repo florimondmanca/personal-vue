@@ -7,6 +7,7 @@ export const PostSerializer = {
             title: data.title,
             description: data.description,
             content: data.content,
+            created: new Date(data.created),
             published: data.published ? new Date(data.published) : null,
             tags: data.tags,
         };

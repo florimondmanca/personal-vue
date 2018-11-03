@@ -11,4 +11,13 @@ const http = axios.create({
     },
 });
 
+export class Authorization {
+    public static set(token: string) {
+        http.defaults.headers.common.Authorization = `Bearer: ${token}`;
+    }
+    public static unset() {
+        delete http.defaults.headers.common.Authorization;
+    }
+}
+
 export default http;
